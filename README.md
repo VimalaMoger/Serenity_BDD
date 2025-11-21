@@ -47,7 +47,7 @@ src/test/java
 -------------------------------------
 
 ## Dependencies
-```spring-boot-starter-parent/starter-test, serenity-cucumber, maven-compiler-plugin, maven-surefire-plugin, maven-failsafe-plugin```
+```spring-boot-starter-parent/starter-test, serenity-cucumber, maven-compiler-plugin, maven-surefire-plugin, serenity-maven-plugin```
 
 ## Running the tests under Maven
 
@@ -55,6 +55,7 @@ Maven command from cmd window
 ```
 mvn clean verify serenity:aggregate
 ```
+![testResult](/assets/testresults.PNG)
 
 ## Viewing the reports
 [Serenity test reports](/target/site/serenity/index.html)

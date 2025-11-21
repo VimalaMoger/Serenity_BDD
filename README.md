@@ -12,7 +12,7 @@
     
 
 ## Application under Test
-Testing the UI of ThrillioWeb App
+Testing the UI of  [ThrillioWeb](https://github.com/VimalaMoger/ThrillioWeb/) App
 
 ## Scenarios to Automate
 Test covers the workflow of opening the login page, creating new user, login to resources, and logout

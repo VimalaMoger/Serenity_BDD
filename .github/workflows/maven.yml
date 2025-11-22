@@ -1,0 +1,43 @@
+name: UI Testing CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout source code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Set up Java
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '25'
+          distribution: 'adopt'
+
+      # 3. Install dependencies & run tests
+      - name: Run API tests
+        run: mvn clean verify serenity:aggregate
+       
+      # 4. Upload Serenity report as artifacts
+      - name: Upload Serenity HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-json-report
+          path: target/site/serenity
+
+      # 5. Hosting automation report on GitHub Pages with GitHub Actions
+      - name: Deploy pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: ./target/site/serenity
